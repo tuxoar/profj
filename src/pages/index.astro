@@ -1,11 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getEntry } from 'astro:content';
+import { getEntry, render } from 'astro:content';
 
 // Content comes from src/content/pages/home.md — see that file to edit text.
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const entry = await getEntry('pages', 'home');
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 const f = entry.data;
 const id = f.identity ?? {};
 // Keep the name on one line in the big heading

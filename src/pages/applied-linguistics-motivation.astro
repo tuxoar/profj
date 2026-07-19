@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getEntry } from 'astro:content';
+import { getEntry, render } from 'astro:content';
 
 // Content comes from src/content/pages/applied-linguistics-motivation.md
 const entry = await getEntry('pages', 'applied-linguistics-motivation');
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 const f = entry.data;
 ---
 <BaseLayout title={f.title} description={f.description}>

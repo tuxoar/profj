@@ -1,12 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Placeholder from '../components/Placeholder.astro';
-import { getEntry } from 'astro:content';
+import { getEntry, render } from 'astro:content';
 
 // Content comes from src/content/pages/language-pedagogy.md
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const entry = await getEntry('pages', 'language-pedagogy');
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 const f = entry.data;
 ---
 <BaseLayout title={f.title} description={f.description}>

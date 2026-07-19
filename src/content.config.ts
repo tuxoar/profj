@@ -1,4 +1,5 @@
 import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
 
 // Schema for the editable page content. If an edit breaks one of these fields,
 // the build fails with a clear message and the LAST WORKING version of the site
@@ -10,7 +11,8 @@ const listItem = z.object({
 });
 
 const pages = defineCollection({
-  type: 'content',
+  // Load every Markdown file in src/content/pages/ (id = filename without .md)
+  loader: glob({ pattern: '**/*.md', base: './src/content/pages' }),
   schema: z.object({
     // Shared
     title: z.string(),
