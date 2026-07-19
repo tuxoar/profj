@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<BaseLayout title="Junqing (Jessie) Jia — Chinese Language Pedagogy">
+  <!-- Hero -->
+  <div class="hero-wrap">
+  <section class="shell hero">
+    <div>
+      <img class="portrait" src={`${base}/images/portrait.jpg`} width="500" height="282"
+        alt="Junqing (Jessie) Jia" />
+    </div>
+    <div>
+      <p class="eyebrow">Hamilton College</p>
+      <h1 class="hero__title">Junqing&nbsp;(Jessie)&nbsp;Jia</h1>
+      <p class="hero__role">Associate Professor of East Asian Languages &amp; Literatures (Chinese)</p>
+      <p class="lead">
+        I study how learners of Chinese build — and sustain — the motivation to
+        keep going, and I design teaching that turns classroom study into a
+        lifelong, self-directed practice.
+      </p>
+    </div>
+  </section>
+  </div>
+
+  <!-- About -->
+  <section class="section">
+    <div class="shell measure">
+      <h2>About</h2>
+      <p>
+        I am an Associate Professor of Chinese at Hamilton College, where I have
+        taught since 2017 in the Department of East Asian Languages &amp;
+        Literatures and the programs in Chinese and Asian Studies. My work sits
+        at the meeting point of <strong>applied linguistics</strong> and
+        <strong>language pedagogy</strong>: I research the psychology of
+        second-language motivation and translate what I find into materials and
+        classrooms that help students perform beyond proficiency.
+      </p>
+      <p>
+        My teaching and research focus on understanding sustainable
+        foreign-language learning motivation and on creating motivating
+        experiences in the classroom and beyond — with the goal of transforming
+        students into lifelong, self-motivated, and effective learners.
+      </p>
+    </div>
+  </section>
+
+  <!-- Explore cards -->
+  <section class="section">
+    <div class="shell">
+      <h2>Explore</h2>
+      <div class="grid grid--2" style="margin-top:1.5rem;">
+        <a class="card" href={`${base}/applied-linguistics-motivation/`}>
+          <p class="eyebrow" style="margin-bottom:0.4rem;">Research</p>
+          <h3>Applied Linguistics &amp; Motivation</h3>
+          <p class="card__meta">
+            Vision, socialization, and progression in Chinese language learner
+            motivation.
+          </p>
+          <span class="card__cta">Read the research →</span>
+        </a>
+        <a class="card" href={`${base}/language-pedagogy/`}>
+          <p class="eyebrow" style="margin-bottom:0.4rem;">Teaching</p>
+          <h3>Language Pedagogy</h3>
+          <p class="card__meta">
+            Textbooks, edited volumes, and courses in Chinese as a foreign
+            language.
+          </p>
+          <span class="card__cta">See the work →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / facts -->
+  <section class="section">
+    <div class="shell measure">
+      <h2>Contact &amp; profile</h2>
+      <ul class="facts" style="margin-top:1.25rem;">
+        <li><span class="facts__k">Email</span><span><a href="mailto:jjia@hamilton.edu">jjia@hamilton.edu</a></span></li>
+        <li><span class="facts__k">Phone</span><span>315-859-4327</span></li>
+        <li><span class="facts__k">Office</span><span>Christian A. Johnson Hall 408B</span></li>
+        <li><span class="facts__k">Department</span><span>East Asian Languages &amp; Literatures · Chinese · Asian Studies</span></li>
+        <li>
+          <span class="facts__k">Profiles</span>
+          <span>
+            <a href="https://www.hamilton.edu/academics/our-faculty/directory/faculty-detail/Junqing-Jia">Hamilton</a>
+            ·
+            <a href="https://www.semanticscholar.org/author/Junqing-Jia/47710519">Semantic Scholar</a>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

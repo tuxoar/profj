@@ -1,0 +1,57 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+const {
+  title,
+  description = 'Junqing (Jessie) Jia — Associate Professor of Chinese at Hamilton College. Research on Chinese language pedagogy and language-learning motivation.',
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL;
+const home = base.replace(/\/$/, '') + '/' || '/';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href={`${base.replace(/\/$/, '')}/favicon.svg`} type="image/svg+xml" />
+
+    <!-- Self-contained font: Newsreader (serif headings) via Google Fonts CSS.
+         Body uses the system sans stack, so the page renders fine even if the
+         font request is blocked. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="shell site-header__inner">
+        <a class="brand" href={home}>
+          Junqing&nbsp;(Jessie)&nbsp;Jia
+          <span>Chinese Language Pedagogy · Hamilton College</span>
+        </a>
+        <Nav />
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>

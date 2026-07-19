@@ -1,0 +1,16 @@
+---
+// Labeled placeholder for images that will be supplied later (portrait, book
+// covers). Swap the whole component for an <img> once real assets exist.
+interface Props {
+  variant?: 'portrait' | 'cover';
+  label?: string;
+  file?: string;
+}
+const { variant = 'portrait', label = 'Image', file } = Astro.props;
+---
+<div class={`placeholder placeholder--${variant}`} role="img" aria-label={`Placeholder: ${label}`}>
+  <span class="placeholder__label">
+    <strong>{label}</strong>
+    {file && <span>replace <code>{file}</code></span>}
+  </span>
+</div>

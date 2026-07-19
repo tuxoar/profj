@@ -1,0 +1,31 @@
+---
+// Shared header navigation. Active link derived from the current pathname so
+// it stays correct under any `base` configured for GitHub Pages.
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/applied-linguistics-motivation/', label: 'Applied Linguistics & Motivation' },
+  { href: '/language-pedagogy/', label: 'Language Pedagogy' },
+];
+
+const base = import.meta.env.BASE_URL; // '/' or '/repo/'
+const withBase = (href: string) => (base.replace(/\/$/, '') + href).replace(/\/{2,}/g, '/');
+
+// Normalize current path (strip base + trailing slash) for comparison.
+const strip = (p: string) => {
+  let out = p;
+  if (base !== '/' && out.startsWith(base.replace(/\/$/, ''))) {
+    out = out.slice(base.replace(/\/$/, '').length);
+  }
+  out = out.replace(/\/+$/, '');
+  return out === '' ? '/' : out;
+};
+const current = strip(Astro.url.pathname);
+const isActive = (href: string) => strip(href) === current;
+---
+<nav class="nav" aria-label="Primary">
+  {links.map((l) => (
+    <a href={withBase(l.href)} aria-current={isActive(l.href) ? 'page' : undefined}>
+      {l.label}
+    </a>
+  ))}
+</nav>
