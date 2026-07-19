@@ -1,25 +1,35 @@
 ---
+import { getEntry } from 'astro:content';
+
+// Identity comes from src/content/pages/home.md (edit it there).
+const home = await getEntry('pages', 'home');
+const f = home.data;
+const id = f.identity ?? {};
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
   <div class="shell site-footer__inner">
     <div class="site-footer__contact">
       <strong style="color: var(--ink-soft); font-family: var(--serif); font-size: var(--step-0);">
-        Junqing (Jessie) Jia
+        {f.name}
       </strong>
-      <span>Associate Professor of East Asian Languages &amp; Literatures (Chinese)</span>
-      <span>Hamilton College · Christian A. Johnson Hall 408B</span>
-      <span>
-        <a href="mailto:jjia@hamilton.edu">jjia@hamilton.edu</a> · 315-859-4327
-      </span>
+      {f.role && <span>{f.role}</span>}
+      <span>Hamilton College{id.office ? ` · ${id.office}` : ''}</span>
+      {(id.email || id.phone) && (
+        <span>
+          {id.email && <a href={`mailto:${id.email}`}>{id.email}</a>}
+          {id.email && id.phone && ' · '}
+          {id.phone}
+        </span>
+      )}
     </div>
     <div>
-      <p style="margin:0;">
-        <a href="https://www.hamilton.edu/academics/our-faculty/directory/faculty-detail/Junqing-Jia">
-          Hamilton profile
-        </a>
-      </p>
-      <p style="margin:0.25rem 0 0;">&copy; {year} Junqing Jia</p>
+      {id.hamiltonUrl && (
+        <p style="margin:0;">
+          <a href={id.hamiltonUrl}>Hamilton profile</a>
+        </p>
+      )}
+      <p style="margin:0.25rem 0 0;">&copy; {year} {f.name}</p>
     </div>
   </div>
 </footer>

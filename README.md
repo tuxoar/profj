@@ -2,14 +2,29 @@
 
 A simple, static academic portfolio site for Dr. Junqing (Jessie) Jia, Associate
 Professor of East Asian Languages & Literatures (Chinese) at Hamilton College.
-Built with [Astro](https://astro.build/) and designed to be hosted for free on
-GitHub Pages.
+Built with [Astro](https://astro.build/) and hosted for free on GitHub Pages at
+**https://tuxoar.github.io/profj/**.
+
+> **✏️ Editing the site content?** See **[EDITING.md](EDITING.md)** — a plain,
+> no-coding-required guide. All page text lives in Markdown files under
+> `src/content/pages/` and can be edited right in the browser on GitHub.
+
+> This repository (`tuxoar/profj`) is the **canonical, deployed** copy.
 
 ## Pages
 
 - **Home** (`/`) — introduction, about, contact.
 - **Applied Linguistics & Motivation** (`/applied-linguistics-motivation/`) — research focus and publications.
 - **Language Pedagogy** (`/language-pedagogy/`) — teaching approach, books, and courses.
+
+## How content works
+
+The `.astro` files in `src/pages/` are **templates** (the design). The actual
+words come from Markdown files in `src/content/pages/` — `home.md`,
+`applied-linguistics-motivation.md`, `language-pedagogy.md`. A schema in
+`src/content/config.ts` validates those files at build time, so a typo fails the
+build loudly instead of publishing a broken page. Editors should only need the
+Markdown files; see [EDITING.md](EDITING.md).
 
 ## Run locally
 
@@ -27,28 +42,17 @@ npm run build    # generate the static site into dist/
 npm run preview  # preview the production build locally
 ```
 
-## Swapping in real images
+## Images
 
-Placeholder image blocks show exactly which file to add. Drop the real files
-into `public/images/` and replace the `<Placeholder … />` component with a plain
-`<img>`:
+Images live in `public/images/`. No code changes are needed to swap them:
 
-| Placeholder | Suggested file | Used on |
-| --- | --- | --- |
-| Portrait | `public/images/portrait.jpg` | Home |
-| Book cover — *Negotiating the Chinese Workplace* | `public/images/workplace-cover.jpg` | Language Pedagogy |
-| Book cover — *Performed Culture in Action* | `public/images/performed-culture-cover.jpg` | Language Pedagogy |
-| Book cover — *Perform Suzhou* | `public/images/perform-suzhou-cover.jpg` | Language Pedagogy |
+- **Portrait** — upload to `public/images/` and set the `portrait:` field in
+  `home.md` to the filename (default `portrait.jpg`).
+- **Book covers** — upload to `public/images/` and set the `cover:` field on that
+  book in `language-pedagogy.md` (e.g. `cover: "workplace.jpg"`). Leave `cover: ""`
+  to show a neutral placeholder until a cover is available.
 
-Example, in `src/pages/index.astro`:
-
-```astro
-<!-- before -->
-<Placeholder variant="portrait" label="Portrait of Junqing Jia" file="images/portrait.jpg" />
-<!-- after -->
-<img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/portrait.jpg`}
-     alt="Junqing Jia" class="placeholder--portrait" style="border-radius:10px;" />
-```
+See [EDITING.md](EDITING.md) for the step-by-step (browser-only) version.
 
 ## Deploying to GitHub Pages
 
