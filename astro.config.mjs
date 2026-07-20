@@ -5,11 +5,10 @@ export default defineConfig({
   // Static output — every page is pre-rendered to plain HTML for GitHub Pages.
   output: 'static',
 
-  // Deployed as a GitHub *project* page at https://tuxoar.github.io/profj/,
-  // so `site` is the user domain and `base` is the repo name. All internal
-  // links/assets are base-aware, so they resolve under this subpath.
-  site: 'https://tuxoar.github.io',
-  base: '/profj',
+  // Served at the custom domain profjia.com (configured in the repo's GitHub
+  // Pages settings), which maps the site to the domain root — so no `base`
+  // subpath. GitHub 301-redirects tuxoar.github.io/profj there.
+  site: 'https://profjia.com',
 
   trailingSlash: 'ignore',
 });

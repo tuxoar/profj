@@ -50,4 +50,4 @@ A recurring theme in my work is helping learners **perform beyond proficiency**:
 establishing domain expertise so that Chinese becomes a tool for doing meaningful
 things, not only a subject to be studied. This bridges applied-linguistics theory
 and the day-to-day design of teaching — the thread that connects this work to my
-[language pedagogy](/profj/language-pedagogy/).
+[language pedagogy](/language-pedagogy/).
